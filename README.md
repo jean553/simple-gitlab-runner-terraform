@@ -23,3 +23,25 @@ packer build \
     -var 'region=eu-west-3' \
     packer.json
 ```
+
+## Launch the instance
+
+```sh
+terraform init
+
+terraform plan \
+    -var 'access_key=ACCESS_KEY' \
+    -var 'secret_key=SECRET_KEY' \
+    -var 'region=eu-west-3' \
+    -var 'key=KEY_PAIR_NAME' \
+    -var 'pem_file=LOCAL_PEM_FILE_PATH' \
+    -var 'simple-gitlab-runner-ami=GITLAB_RUNNER_AMI_ID'
+
+terraform apply \
+    -var 'access_key=ACCESS_KEY' \
+    -var 'secret_key=SECRET_KEY' \
+    -var 'region=eu-west-3' \
+    -var 'key=KEY_PAIR_NAME' \
+    -var 'pem_file=LOCAL_PEM_FILE_PATH' \
+    -var 'simple-gitlab-runner-ami=GITLAB_RUNNER_AMI_ID'
+```
