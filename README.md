@@ -10,9 +10,10 @@ Build a very simple "ready-to-use" EC2 instance for Gitlab-CI runner builds.
  * Minimal AMI with Docker-CE for builds
  * EC2 script to start Gitlab-CI runner
 
-## IAM user
+## Requirements
 
 Create a IAM user with `AmazonEC2FullAcess` privilege.
+Create a key pair and get its `pem` file.
 
 ## Build the AMI
 
