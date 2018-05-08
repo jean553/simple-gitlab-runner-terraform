@@ -1,0 +1,34 @@
+---
+- hosts: localhost
+  become: yes
+
+  tasks:
+
+    - name: basic tools installed for Docker
+      apt:
+        name: "{{ item }}"
+        state: present
+        update_cache: yes
+      with_items:
+        - htop
+        - apt-transport-https
+        - ca-certificates
+        - curl
+        - gnupg2
+        - software-properties-common
+
+    - name: docker repositories GPG key added
+      apt_key:
+        url: https://download.docker.com/linux/debian/gpg
+        state: present
+
+    - name: docker repository added 
+      apt_repository:
+        repo: deb https://download.docker.com/linux/debian stretch stable
+        state: present
+
+    - name: docker-ce installed
+      apt:
+        name: docker-ce
+        state: present
+        update_cache: yes
