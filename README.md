@@ -2,6 +2,8 @@
 
 Build a very simple "ready-to-use" EC2 instance for Gitlab-CI runner builds.
 
+*NOTE:* this is a work in progress
+
 ## Properties
 
  * Debian 9
