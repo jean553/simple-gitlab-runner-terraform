@@ -1,0 +1,31 @@
+{
+    "variables": {
+        "access_key": "",
+        "secret_key": "",
+        "region": ""
+    },
+    "builders": [{
+        "type": "amazon-ebs",
+        "access_key": "{{user `access_key`}}",
+        "secret_key": "{{user `secret_key`}}",
+        "region": "{{user `region`}}",
+        "source_ami": "ami-93a213ee",
+        "instance_type": "t2.micro",
+        "ssh_username": "admin",
+        "ami_name": "simple-gitlab-runner-terraform_ami"
+    }],
+    "provisioners": [
+        {
+            "type": "shell",
+            "inline": [
+                "sleep 60",
+                "sudo apt-get update",
+                "sudo apt-get install -y ansible"
+            ]
+        },
+        {
+            "type": "ansible-local",
+            "playbook_file": "bootstrap.yml"
+        }
+    ]
+}
