@@ -32,3 +32,12 @@
         name: docker-ce
         state: present
         update_cache: yes
+
+    - name: gitlab official repository added
+      shell: "curl -L https://packages.gitlab.com/install/repositories/runner/gitlab-runner/script.deb.sh | sudo bash"
+
+    - name: gitlab-runner installed
+      apt:
+        name: gitlab-runner
+        state: present
+        update_cache: yes
