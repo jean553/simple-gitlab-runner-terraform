@@ -78,5 +78,5 @@
         url: https://www.python.org/ftp/python/3.6.4/Python-3.6.4.tgz
 
     - name: Python3.6 sources unarchived
-      unarchived:
+      unarchive:
         src: Python-3.6.4.tgz
