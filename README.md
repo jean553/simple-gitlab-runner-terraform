@@ -37,7 +37,8 @@ terraform plan \
     -var 'simple-gitlab-runner-ami=GITLAB_RUNNER_AMI_ID' \
     -var 'gitlab_url=GITLAB_URL' \
     -var 'token=TOKEN' \
-    -var 'project=PROJECT'
+    -var 'project=PROJECT' \
+    -var 'executor=EXECUTOR'
 
 terraform apply \
     -var 'access_key=ACCESS_KEY' \
@@ -48,5 +49,6 @@ terraform apply \
     -var 'simple-gitlab-runner-ami=GITLAB_RUNNER_AMI_ID' \
     -var 'gitlab_url=GITLAB_URL' \
     -var 'token=TOKEN' \
-    -var 'project=PROJECT'
+    -var 'project=PROJECT' \
+    -var 'executor=EXECUTOR'
 ```
