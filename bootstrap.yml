@@ -76,9 +76,19 @@
     - name: Python3.6 sources downloaded
       get_url:
         url: https://www.python.org/ftp/python/3.6.4/Python-3.6.4.tgz
-        dest: /tmp/
+        dest: /tmp
 
     - name: Python3.6 sources unarchived
       unarchive:
         src: /tmp/Python-3.6.4.tgz
-        dest: /tmp/
+        dest: /tmp
+
+    - name: Python3.6 built
+      shell: ./configure --enable-optimizations && make -j8
+      args:
+        chdir: /tmp
+
+    - name: Python3.6 installed
+      shell: make altinstall
+      args:
+        chdir: /tmp
