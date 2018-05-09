@@ -7,6 +7,7 @@ variable "simple-gitlab-runner-ami" {}
 variable "gitlab_url" {}
 variable "token" {}
 variable "project" {}
+variable "executor" {}
 
 provider "aws" {
   access_key     = "${var.access_key}"
@@ -25,7 +26,7 @@ resource "aws_instance" "simple-gitlab-runner" {
   }
   provisioner "remote-exec" {
     inline                   = [
-      "sudo gitlab-runner register --non-interactive --url ${var.gitlab_url} --registration-token ${var.token} --executor docker --docker-image debian:stretch",
+      "sudo gitlab-runner register --non-interactive --url ${var.gitlab_url} --registration-token ${var.token} --executor ${var.executor} --docker-image debian:stretch",
     ]
 
     connection {

@@ -41,3 +41,14 @@
         name: gitlab-runner
         state: present
         update_cache: yes
+
+    - name: docker group created
+      group:
+        name: docker
+        state: present
+
+    - name: gitlab-runner user added into the docker group
+      user:
+        name: gitlab-runner
+        groups: docker
+        append: yes
