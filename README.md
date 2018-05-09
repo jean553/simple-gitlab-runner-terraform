@@ -5,8 +5,11 @@ Build a very simple "ready-to-use" EC2 instance for Gitlab-CI runner builds.
 ## Properties
 
  * Debian 9
- * Minimal AMI with Docker-CE for builds
- * Starts one runner for a given project
+ * Supports `docker` and `shell` builds (executors)
+ * `awscli` installed for usage from gitlab-ci.yml file
+
+NOTE: this project downloads and installs Python3.6 in order to get the latest version of `awscli`.
+Python3.6 is not available on the last Debian stable version, no AMI of further version exist yet.
 
 ## Requirements
 
