@@ -16,11 +16,6 @@
     }],
     "provisioners": [
         {
-            "type": "file",
-            "destination": "/tmp/firstboot.sh",
-            "source": "./firstboot.sh"
-        },
-        {
             "type": "shell",
             "inline": [
                 "sleep 60",

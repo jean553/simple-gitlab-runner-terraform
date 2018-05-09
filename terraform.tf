@@ -4,6 +4,9 @@ variable "region" {}
 variable "key" {}
 variable "pem_file" {}
 variable "simple-gitlab-runner-ami" {}
+variable "gitlab_url" {}
+variable "token" {}
+variable "project" {}
 
 provider "aws" {
   access_key     = "${var.access_key}"
@@ -18,12 +21,11 @@ resource "aws_instance" "simple-gitlab-runner" {
   associate_public_ip_address= true
   security_groups            = ["${aws_security_group.allow-all-inbound-ssh.name}"]
   tags {
-    Name                     = "simple-gitlab-runner"
+    Name                     = "simple-gitlab-runner_${var.project}"
   }
   provisioner "remote-exec" {
     inline                   = [
-      "sudo chmod +x /firstboot.sh",
-      "sudo /firstboot.sh"
+      "sudo gitlab-runner register --non-interactive --url ${var.gitlab_url} --registration-token ${var.token} --executor docker --docker-image debian:stretch",
     ]
 
     connection {
@@ -36,10 +38,18 @@ resource "aws_instance" "simple-gitlab-runner" {
 resource "aws_security_group" "allow-all-inbound-ssh" {
   name                       = "allow-all-inbound-ssh"
   description                = "allow only inbound SSH traffic"
+
   ingress {
     from_port                = 22
     to_port                  = 22
     protocol                 = "tcp"
+    cidr_blocks              = ["0.0.0.0/0"]
+  }
+
+  egress {
+    from_port                = 0
+    to_port                  = 0
+    protocol                 = "-1"
     cidr_blocks              = ["0.0.0.0/0"]
   }
 }

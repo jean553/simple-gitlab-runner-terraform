@@ -41,8 +41,3 @@
         name: gitlab-runner
         state: present
         update_cache: yes
-
-    - name: firstboot script copied and ready for execution
-      copy:
-        src: /tmp/firstboot.sh
-        dest: /firstboot.sh
