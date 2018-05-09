@@ -92,3 +92,8 @@
       shell: make altinstall
       args:
         chdir: /tmp
+
+    - name: awscli installed
+      pip:
+        name: awscli
+        executable: pip-3.6
