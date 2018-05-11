@@ -86,14 +86,19 @@
     - name: Python3.6 built
       shell: ./configure --enable-optimizations && make -j8
       args:
-        chdir: /tmp
+        chdir: /tmp/Python-3.6.4
 
     - name: Python3.6 installed
       shell: make altinstall
       args:
-        chdir: /tmp
+        chdir: /tmp/Python-3.6.4
+
+    - name: pip3 installed
+      apt:
+        name: python3-pip
+        state: present
 
     - name: awscli installed
       pip:
         name: awscli
-        executable: pip-3.6
+        executable: pip3.6
