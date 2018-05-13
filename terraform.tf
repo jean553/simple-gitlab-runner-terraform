@@ -37,7 +37,7 @@ resource "aws_instance" "simple-gitlab-runner" {
 }
 
 resource "aws_security_group" "allow-all-inbound-ssh" {
-  name                       = "allow-all-inbound-ssh"
+  name                       = "simple-gitlab-runner-security-group_${var.project}"
   description                = "allow only inbound SSH traffic"
 
   ingress {
