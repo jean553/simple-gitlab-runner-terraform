@@ -26,6 +26,11 @@ resource "aws_instance" "simple-gitlab-runner" {
   }
   provisioner "remote-exec" {
     inline                   = [
+
+      "sudo mkdir /root/.aws",
+      "sudo sh -c \"echo '[default]\naws_access_key_id=${var.access_key}\naws_secret_access_key=${var.secret_key}' > /root/.aws/credentials\"",
+      "sudo $(sudo PATH=$PATH:/root/.aws aws ecr get-login --no-include-email --region ${var.region})",
+
       "sudo gitlab-runner register --non-interactive --url ${var.gitlab_url} --registration-token ${var.token} --executor ${var.executor} --docker-image debian:stretch",
     ]
 
