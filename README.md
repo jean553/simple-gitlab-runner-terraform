@@ -14,6 +14,10 @@ Python3.6 is not available on the last Debian stable version, no AMI of further 
 ## Requirements
 
 Create a IAM user with `AmazonEC2FullAcess` privilege.
+
+If the runner is supposed to push built Docker images on a AWS ECR,
+the IAM user must have the `AmazonEC2ContainerRegistryFullAccess`.
+
 Create a key pair and get its `pem` file.
 
 ## Build the AMI
