@@ -43,9 +43,9 @@ terraform plan \
     -var 'pem_file=LOCAL_PEM_FILE_PATH' \
     -var 'simple-gitlab-runner-ami=GITLAB_RUNNER_AMI_ID' \
     -var 'gitlab_url=GITLAB_URL' \
-    -var 'token=TOKEN' \
-    -var 'project=PROJECT' \
-    -var 'executor=EXECUTOR'
+    -var 'shell-runner-token=SHELL_RUNNER_TOKEN' \
+    -var 'docker-runner-token=DOCKER_RUNNER_TOKEN' \
+    -var 'project=PROJECT'
 
 terraform apply \
     -var 'access_key=ACCESS_KEY' \
@@ -55,7 +55,7 @@ terraform apply \
     -var 'pem_file=LOCAL_PEM_FILE_PATH' \
     -var 'simple-gitlab-runner-ami=GITLAB_RUNNER_AMI_ID' \
     -var 'gitlab_url=GITLAB_URL' \
-    -var 'token=TOKEN' \
-    -var 'project=PROJECT' \
-    -var 'executor=EXECUTOR'
+    -var 'shell-runner-token=SHELL_RUNNER_TOKEN' \
+    -var 'docker-runner-token=DOCKER_RUNNER_TOKEN' \
+    -var 'project=PROJECT'
 ```
