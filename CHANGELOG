@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.0.0] - 2018-05-22
+  - [#12](https://github.com/jean553/simple-gitlab-runner-terraform/issues/12)
+    Handle multiple types of builds (both shell and docker)
+
 ## [0.1.1] - 2018-05-19
   - [#11](https://github.com/jean553/simple-gitlab-runner-terraform/issues/11)
     Pass AWS CLI credentials via terraform in order to execute docker login for images push to ECR

@@ -5,9 +5,9 @@ variable "key" {}
 variable "pem_file" {}
 variable "simple-gitlab-runner-ami" {}
 variable "gitlab_url" {}
-variable "token" {}
+variable "shell-runner-token" {}
+variable "docker-runner-token" {}
 variable "project" {}
-variable "executor" {}
 
 provider "aws" {
   access_key     = "${var.access_key}"
@@ -31,7 +31,8 @@ resource "aws_instance" "simple-gitlab-runner" {
       "sudo sh -c \"echo '[default]\naws_access_key_id=${var.access_key}\naws_secret_access_key=${var.secret_key}' > /root/.aws/credentials\"",
       "sudo $(sudo PATH=$PATH:/root/.aws aws ecr get-login --no-include-email --region ${var.region})",
 
-      "sudo gitlab-runner register --non-interactive --url ${var.gitlab_url} --registration-token ${var.token} --executor ${var.executor} --docker-image debian:stretch",
+      "sudo gitlab-runner register --non-interactive --url ${var.gitlab_url} --registration-token ${var.shell-runner-token} --executor shell",
+      "sudo gitlab-runner register --non-interactive --url ${var.gitlab_url} --registration-token ${var.docker-runner-token} --executor docker --docker-image debian:stretch",
     ]
 
     connection {
